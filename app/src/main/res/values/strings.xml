@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
+    <string name="app_name">Task Manager</string>
+    <string name="title_task_dashboard">Task Dashboard</string>
 </resources>
