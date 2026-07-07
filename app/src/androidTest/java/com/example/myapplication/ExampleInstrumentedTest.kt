@@ -2,6 +2,12 @@ package com.example.myapplication
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import androidx.test.core.app.ActivityScenario
+import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.hasMinimumChildCount
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,5 +26,14 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.example.myapplication", appContext.packageName)
+    }
+
+    @Test
+    fun recyclerViewIsDisplayedAndPopulated() {
+        ActivityScenario.launch(MainActivity::class.java)
+
+        onView(withId(R.id.recyclerView))
+            .check(matches(isDisplayed()))
+            .check(matches(hasMinimumChildCount(1)))
     }
 }
